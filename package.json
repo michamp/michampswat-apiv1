@@ -26,6 +26,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@iconify/react": "^5.0.1"
+    "@iconify/react": "^5.0.1",
+    "daisyui": "^4.12.2"
   }
 }
