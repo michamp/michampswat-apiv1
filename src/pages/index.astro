@@ -13,7 +13,7 @@ interface NewsDataInterface
 
 };
 
-const site = import.meta.env.SITE;
+
 var fbiNews:Array<NewsDataInterface> = [];
 var fbiNewsArray:Array<NewsDataInterface> = [];
 
@@ -21,7 +21,7 @@ var fbiTopTenMostWanted:Array<FbiType> = [];
 var fbiTTMWArray:Array<FbiType> = [];
 try 
 {
-	const fbiNewsJson:string = site + "/michamp-fbinews-rapidapi-06202024-1756PM.json";
+	const fbiNewsJson:string = Astro.url.origin + "/michamp-fbinews-rapidapi-06202024-1756PM.json";
 	console.log("fbiNewsJson: " +fbiNewsJson);
 	const res = await fetch(fbiNewsJson) 
 	fbiNews = await res.json()
@@ -33,7 +33,7 @@ try
 	
 	console.log("fbiNewsArray=" + fbiNewsArray)
 		
-	const fbiTTJson:string = site + "/michamp-fbitopten-rapidapi-06172024-1239PM.json";
+	const fbiTTJson:string = Astro.url.origin + "/michamp-fbitopten-rapidapi-06172024-1239PM.json";
 	console.log("fbiTTJson: " + fbiTTJson);
 	const resTTMW = await fetch(fbiTTJson) 
 	console.log("resTTMW=" + resTTMW)
@@ -60,7 +60,6 @@ catch (error)
 
 <Layout title="MICHAMP SWAT API V1 Template">
 		<main>
-		
 
 <nav id="header" class="bg-gray-900 fixed w-full z-10 top-0 shadow">
 	
@@ -70,6 +69,7 @@ catch (error)
 			<div class="w-1/2 pl-2 md:pl-0">
 				<a class="text-gray-100 text-base xl:text-xl no-underline hover:no-underline font-bold"  href="/"> 
 					SWAT Template
+					
 				</a>
             </div>
 			<div class="w-1/2 pr-0">

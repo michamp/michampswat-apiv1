@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://glistening-brioche-48b229",
+
   // Enable React to support React JSX components.
   integrations: [react(), icon({
     include: {
