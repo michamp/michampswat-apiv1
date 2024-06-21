@@ -18,19 +18,27 @@ var fbiNewsArray:Array<NewsDataInterface> = [];
 
 var fbiTopTenMostWanted:Array<FbiType> = [];
 var fbiTTMWArray:Array<FbiType> = [];
+
+var numOfAwards:number = 0; 
+var numOfCaptured:number = 0; 
+var numOfLocated:number = 0; 
+var numOfRecovered:number = 0; 
+var numOfSurrendered:number = 0; 
+var numOfDeceased:number = 0; 
+
 try 
 {
 	const fbiNewsJson:string = Astro.url.origin + "/michamp-fbinews-rapidapi-06202024-1756PM.json";
-	console.log("fbiNewsJson: " +fbiNewsJson);
+	//console.log("fbiNewsJson: " +fbiNewsJson);
 	const res = await fetch(fbiNewsJson) 
 	fbiNews = await res.json()
-	console.log("fbiNews=" + fbiNews)
+	//console.log("fbiNews=" + fbiNews)
 	if(fbiNews != undefined && fbiNews.length > 0)
 	{
 		fbiNewsArray = fbiNews.slice(0);
 	}
 	
-	console.log("fbiNewsArray=" + fbiNewsArray)
+	//console.log("fbiNewsArray=" + fbiNewsArray)
 		
 	const fbiTTJson:string = Astro.url.origin + "/michamp-fbitopten-rapidapi-06172024-1239PM.json";
 	console.log("fbiTTJson: " + fbiTTJson);
@@ -38,24 +46,18 @@ try
 	console.log("resTTMW=" + resTTMW)
 	
 	fbiTopTenMostWanted = await resTTMW.json()
-	console.log("fbiTopTenMostWanted=" + fbiTopTenMostWanted)
+	//console.log("fbiTopTenMostWanted=" + fbiTopTenMostWanted)
 	if(fbiTopTenMostWanted != undefined && fbiTopTenMostWanted.length > 0)
 	{
 
 		fbiTTMWArray = fbiTopTenMostWanted.slice(0);
 	}
 	
-	console.log("fbiTopTenMostWanted=" + fbiTopTenMostWanted)
+	/*console.log("fbiTopTenMostWanted=" + fbiTopTenMostWanted)
 	console.log("fbiTTMWArray=" + fbiTTMWArray)
-	
+	*/
+    
 	//Build Overview Stats of Current FBI Top Ten 
-	var numOfAwards:number = 0; 
-	var numOfCaptured:number = 0; 
-	var numOfLocated:number = 0; 
-	var numOfRecovered:number = 0; 
-	var numOfSurrendered:number = 0; 
-	var numOfDeceased:number = 0; 
-	
 	fbiTTMWArray.map((fugitive) =>
 	{
 		if(fugitive.reward_text != undefined && fugitive.reward_text != null 
