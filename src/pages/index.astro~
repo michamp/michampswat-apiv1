@@ -130,7 +130,7 @@ catch (error)
 				  z-30 ">
 				  
 					  <div tabindex={0} role="button" class="btn btn-ghost btn-square ">
-					  	<Icon name="ri:arrow-down-double-fill" class="text-2xl"/>
+					  	<Icon name="ri:menu-fill" class="text-2xl"/>
 					  </div>
 					  <ul tabindex={0} class="list-reset menu menu-sm dropdown-content mt-3 z-[1] 
 		      p-2 shadow bg-base-100  w-15">
