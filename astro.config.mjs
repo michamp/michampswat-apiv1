@@ -6,13 +6,13 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://localhost:4321",
+  site: "http://localhost:4321",
 
   // Enable React to support React JSX components.
   integrations: [react(), icon({
     include: {
       // Include `iconoir` icons in the bundle
-      iconoir: ['network-reverse', 'view-structure-down', 'cloud-sync', 'electronics-chip', 'database', 'code'],
+      iconoir: ['network-reverse', 'view-structure-down', 'cloud-sync', 'electronics-chip', 'database', 'code','pharmacy-squared-cross'],
       // Include `carbon` icons in the bundle
       carbon: ['api-1', 'container-services', 'dashboard', 'app-connectivity', 'add', 'email', 'password', 'login', 'error', 'logout'],
       // Include `remix` icons in the bundle

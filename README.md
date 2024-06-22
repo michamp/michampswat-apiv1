@@ -9,7 +9,7 @@ You can deploy this template which is just a starter. It comes with test data fe
 astro.config.mjs
 7   // https://astro.build/config
 8   export default defineConfig({
-9   site: "https://localhost:4321",
+9   site: "http://localhost:4321",
 10  // Enable React to support React JSX components.
 11  integrations: [react(), icon({
 
