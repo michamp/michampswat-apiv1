@@ -3,7 +3,8 @@ MICHAMP SWAT (Security Warnings Aggregated Technology) Template API Version 1 - 
 
 [DEMO](https://mellow-florentine-d6077c.netlify.app/)
 
-You can deploy this template which is just a starter. It comes with test data fetched from the deploy server. To get this working you need to update the site config variable in astro.config.mjs at the root of the application. At line 9 replace ```https://localhost:4321``` with your new URL of your new Netlify server.
+You can deploy this template which is just a starter. It comes with test data fetched from the deploy server. To get this working you need to update the site config variable in astro.config.mjs at the root of the application. 
+At line 9 replace ```https://localhost:4321``` with your new URL of your new Netlify server.
 
 ```javascript 
 astro.config.mjs
