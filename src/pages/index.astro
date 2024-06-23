@@ -157,7 +157,7 @@ catch (error)
 				  z-30 ">
 				  
 					  <div tabindex={0} role="button" class="btn btn-ghost btn-square ">
-					  	<Icon name="ri:arrow-down-double-fill" class="text-2xl"/>
+					  	<Icon name="carbon:caret-down" class="text-2xl"/>
 					  </div>
 					  <ul tabindex={0} class="list-reset menu menu-sm dropdown-content mt-3 z-[1] 
 		      p-2 shadow bg-base-100  w-15">
@@ -245,10 +245,6 @@ catch (error)
 	</nav>
 	
 	
-	
-	
-	
-
 	<!--Container-->
 	<div class="container w-full mx-auto pt-40">
 		
@@ -355,7 +351,7 @@ catch (error)
 					       		
 								<div class="w-full p-3">
 							            <!--Fugitive Card-->
-							            <div class="bg-red-600 border border-red-500 rounded shadow p-2 h-50">
+							            <div class="bg-red-600 rounded shadow p-2 h-50 hover:bg-gray-400">
 							                <div class="flex  items-center justify-center flex-col md:flex-row">
 							                    <div class="flex-shrink pr-4">
 							                        <div class="rounded p-3 bg-white">
@@ -374,16 +370,20 @@ catch (error)
 							                    </div>
 							                    
 							                    <div class="flex-1 text-center md:text-center">
-							                    		<h5 class="font-bold uppercase text-red-500 bg-white">{fugitive.warning_message}</h5>							                    		
-
-							                    		<h3 class="font-bold text-2xl text-white">{fugitive.title}</h3>
-							                        <h5 class="font-bold uppercase text-white">Published:{fugitive.publication}</h5>
-							                        <h5 class="uppercase text-white">{fugitive.description}</h5>
-															<button class="btn btn-square bg-white border-white">
-																<a class="tooltip tooltip-bottom" data-tip="poster" href={fugitive.url} target="_blank">
-																	<Icon name="ri:folder-info-fill" class="text-2xl text-red-600" />
-																</a>
-															</button>
+															<div class="flex flex-col">
+																<h5 class="text-right pb-3">
+																	<button class="btn btn-square bg-white border-white ">
+																		<a class="tooltip tooltip-bottom" data-tip="poster" href={fugitive.url} target="_blank">
+																			<Icon name="ri:folder-info-fill" class="text-3xl text-red-600" />
+																		</a>
+																	</button>
+																</h5>
+								                    		<h5 class="font-bold uppercase text-red-500 bg-white">{fugitive.warning_message}</h5>							                    		
+	
+								                    		<h3 class="font-bold text-2xl text-white">{fugitive.title}</h3>
+								                        <h5 class="font-bold uppercase text-white">Published:{fugitive.publication}</h5>
+								                        <h5 class="uppercase text-white">{fugitive.description}</h5>
+															</div>
 
 							                   
 								
@@ -399,8 +399,68 @@ catch (error)
 		                
 			</div>
 <!-- END: FBI Top Ten Content-->
-
 			
+			<!--Divider-->
+			<hr class="border-b-2 border-gray-600 my-8 mx-4">
+			
+<!-- START: FBI In News Content-->
+			
+			<div class="flex flex-wrap">
+
+		                <h3 class="font-bold uppercase text-2xl text-red-600">FBI In News [Posts: {fbiNewsArray.length}]</h3>
+
+		                {
+		
+				       		fbiNewsArray.map((article:NewsDataInterface,index:number) => (
+				       		
+					       		
+								<div class="w-full p-3">
+							            <!--News Article Card-->
+							            <div class="bg-white border rounded shadow p-2 h-50 hover:bg-gray-300">
+
+							                <div class="flex  items-center justify-center flex-col md:flex-row">
+							                    <div class="flex-shrink pr-4">
+							                        <div class="rounded p-3 bg-white">
+							                        
+							                        <h5 class="text-4xl text-red-600 font-bold uppercase">{index+1}</h5>	
+							                        <Icon name="ri:newspaper-line" class="text-4xl text-red-600" />
+							                        </div>
+							                    </div>
+							                    
+			
+							                    
+							                    <div class="flex-1 text-center md:text-center">
+															<div class="flex flex-col">
+																<h5 class="text-right pb-3">
+																	<button class="btn btn-square bg-white border-white ">
+																		<a class="tooltip tooltip-bottom" data-tip="open" href={article.link} target="_blank">
+																			<Icon name="ri:folder-info-fill" class="text-3xl text-red-600" />
+																		</a>
+																	</button>
+																</h5>
+
+									                     <h5 class="font-bold uppercase text-red-600">{article.date}</h5>
+								                    		<h3 class="font-bold text-2xl text-red-500">{article.title}</h3>
+
+
+															</div>
+
+							                   
+								
+							           
+							                    </div>
+							                </div>
+							                
+							            </div>
+							            <!--/News Article Card-->
+							        </div>
+								    ))
+								}
+				
+		                
+			</div>
+<!-- END: FBI In News Content-->
+
 
             </div>
 								

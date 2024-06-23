@@ -1,4 +1,5 @@
 ---
+import '@fontsource/sunflower';
 import "../tailwind.css"
 const {title} = Astro.props;
 ---
@@ -19,21 +20,21 @@ const {title} = Astro.props;
 	    	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
 	    	
 		<style>
-		.bg-black-alt  {
-			background:#191919;
-		}
-		.text-black-alt  {
-			color:#191919;
-		}
-		.border-black-alt {
-			border-color: #191919;
-		}
-		
-	</style>
+			.bg-black-alt  {
+				background:#191919;
+			}
+			.text-black-alt  {
+				color:#191919;
+			}
+			.border-black-alt {
+				border-color: #191919;
+			}
+			
+	  </style>
 
     <title>{title}</title>
   </head>
-<body class="bg-black-alt font-sans leading-normal tracking-normal">
+<body class="bg-black-alt font-sans leading-normal tracking-normal" style={{ fontFamily: 'Sunflower'}}>
     <slot />
     
     <footer class="bg-black border-t border-black shadow">	

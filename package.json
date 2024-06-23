@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource/sunflower": "^5.0.18",
     "@iconify-json/carbon": "^1.1.36",
     "@iconify-json/iconoir": "^1.1.44",
     "@iconify-json/ri": "^1.1.21",
