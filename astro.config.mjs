@@ -31,7 +31,8 @@ export default defineConfig({
       'lock-2-line',
       'kanban-view-2',
       'flag-fill',
-      'user-forbid-line'
+      'user-forbid-line',
+      'folder-info-fill'
       
       ],
     }
