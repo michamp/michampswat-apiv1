@@ -255,7 +255,7 @@ catch (error)
 		   <h3 class="font-bold uppercase text-2xl text-red-600">Status</h3>
 			<div class="flex flex-wrap">
 
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div class="w-full md:w-1/4 p-3">
                     <!--Metric Card-->
                     <div class="bg-black border border-gray-600 rounded shadow p-2">
                         <div class="flex flex-row items-center">
@@ -271,7 +271,7 @@ catch (error)
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div class="w-full md:w-1/4 p-3">
                     <!--Metric Card-->
                     <div class="bg-black border border-gray-600 rounded shadow p-2">
                         <div class="flex flex-row items-center">
@@ -286,7 +286,7 @@ catch (error)
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div class="w-full md:w-1/4 p-3">
                     <!--Metric Card-->
                     <div class="bg-black border border-gray-600 rounded shadow p-2">
                         <div class="flex flex-row items-center">
@@ -301,7 +301,7 @@ catch (error)
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                <div class="w-full md:w-1/4 p-3">
                     <!--Metric Card-->
                     <div class="bg-black border border-gray-600 rounded shadow p-2">
                         <div class="flex flex-row items-center">
@@ -316,29 +316,14 @@ catch (error)
                     </div>
                     <!--/Metric Card-->
                 </div>
-                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-red-600"><Icon name="iconoir:pharmacy-squared-cross" class="text-white text-4xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Deceased</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfDeceased}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
                 
                 
             </div>
 
 
 			<!--Divider-->
-			<hr class="border-b-2 border-gray-600 my-8 mx-4">
-			
+			<div class="divider"></div>
+
 	<!-- START: FBI Top Ten Content-->
 			
 			<div class="flex flex-wrap">
@@ -351,7 +336,7 @@ catch (error)
 					       		
 								<div class="w-full p-3">
 							            <!--Fugitive Card-->
-							            <div class="bg-red-600 rounded shadow p-2 h-50 hover:bg-gray-400">
+							            <div id={`fugitive-${index}`} class="bg-red-600 rounded shadow p-2 h-50 hover:bg-black" onclick={`window.open('${fugitive.url}')`}>
 							                <div class="flex  items-center justify-center flex-col md:flex-row">
 							                    <div class="flex-shrink pr-4">
 							                        <div class="rounded p-3 bg-white">
@@ -364,7 +349,7 @@ catch (error)
 														<div class="flex-shrink pr-4">
 							                        <div class="rounded p-3">
 							                        <a class="tooltip tooltip-bottom" data-tip="poster" href={fugitive.url} target="_blank" >
-							                        <img  src={thumbImageUrls[index]} />
+							                        <img class="size-fit" src={thumbImageUrls[index]} />
 							                        </a>
 							                        </div>
 							                    </div>
@@ -378,11 +363,13 @@ catch (error)
 																		</a>
 																	</button>
 																</h5>
+																<h3 class="uppercase font-bold text-2xl text-red-500 bg-white">STATUS: [{fugitive.status == "na" ? "AT LIBERTY" : fugitive.status}]</h3>
 								                    		<h5 class="font-bold uppercase text-red-500 bg-white">{fugitive.warning_message}</h5>							                    		
-	
-								                    		<h3 class="font-bold text-2xl text-white">{fugitive.title}</h3>
-								                        <h5 class="font-bold uppercase text-white">Published:{fugitive.publication}</h5>
+									                    	<h3 class="font-bold text-3xl text-white">S{fugitive.title}</h3>
+
+								                        <h5 class="font-bold uppercase text-white">PUBLISHED:{fugitive.publication}</h5>
 								                        <h5 class="uppercase text-white">{fugitive.description}</h5>
+								                        
 															</div>
 
 							                   
@@ -401,7 +388,7 @@ catch (error)
 <!-- END: FBI Top Ten Content-->
 			
 			<!--Divider-->
-			<hr class="border-b-2 border-gray-600 my-8 mx-4">
+			<div class="divider"></div>
 			
 <!-- START: FBI In News Content-->
 			<h3 class="font-bold uppercase text-2xl text-red-600">FBI In News [Posts: {fbiNewsArray.length}]</h3>
@@ -418,31 +405,17 @@ catch (error)
                                 <div class="w-full md:w-1/2 xl:w-1/3 p-3">
 
 							            <!--News Article Card-->
-							            <div class="bg-white border rounded shadow p-2 size-fit  hover:bg-gray-300">
+							            <div class="bg-black border-slate-200 rounded border-0 
+							            shadow p-2 hover:bg-red-400/50 hover:shadow-red-400/50 h-52"  
+							            onclick={`window.open('${article.link}')`}>
 
 							                <div class="flex  items-center justify-center flex-col md:flex-row">
-							                    <div class="flex-shrink pr-4">
-							                        <div class="rounded p-3 bg-white">
-							                        
-							                        <h5 class="text-4xl text-red-600 font-bold uppercase">{index+1}</h5>	
-							                        <Icon name="ri:newspaper-line" class="text-4xl text-red-600" />
-							                        </div>
-							                    </div>
-							                    
-			
-							                    
+					
 							                    <div class="flex-1 text-center md:text-center">
 															<div class="flex flex-col">
-																<h5 class="text-right pb-3">
-																	<button class="btn btn-square bg-white border-white ">
-																		<a class="tooltip tooltip-bottom" data-tip="open" href={article.link} target="_blank">
-																			<Icon name="ri:folder-info-fill" class="text-3xl text-red-600" />
-																		</a>
-																	</button>
-																</h5>
-
-									                     <h5 class="font-bold uppercase text-red-600"><a href={article.link} target="_blank">{article.date}</a></h5>
-								                    		<h3 class="font-bold text-2xl text-red-500"><a href={article.link} target="_blank">{article.title}</a></h3>
+																
+									                     <h5 class="font-bold uppercase text-red-500" style={{ fontWeight: 200}}><a href={article.link} target="_blank">{article.date}</a></h5>
+								                    		<h3 class="font-bold text-2xl text-white" style={{ fontWeight: 200}}><a href={article.link} target="_blank">{article.title.substring(0,100)}{article.title.length > 100 ? "..." : ""}</a></h3>
 
 
 															</div>
@@ -531,7 +504,7 @@ catch (error)
 	  return false;
 	}
 
-
+	
 </script>
 
 		</main>
