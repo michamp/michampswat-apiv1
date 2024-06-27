@@ -26,17 +26,17 @@ export type FbiImageType =
 
 export type FbiType =
 {
-	dates_of_birth_used:Array<String>;
-	place_of_birth:string;
-	reward_text:string;
-	poster_classification:string;
+			dates_of_birth_used:Array<String>;
+			place_of_birth:string;
+			reward_text:string;
+			poster_classification:string;
       	uid:string;
-	possible_states:Array<String>;
+			possible_states:Array<String>;
       	sex:string;
       	details:string;
       	scars_and_marks:string;
-	images:Array<FbiImageType>;
-        reward_min:number;
+			images:Array<FbiImageType>;
+        	reward_min:number;
       	age_max:number;
       	warning_message:string;
       	weight:string;
@@ -44,12 +44,12 @@ export type FbiType =
       	url:string;
       	ncic:string;
       	race_raw:string;
-        weight_max:number;
-        nationality:string;
-        suspects:string;
-        remarks:string;
+        	weight_max:number;
+        	nationality:string;
+        	suspects:string;
+        	remarks:string;
       	race:string;
-        height_max:number;
+        	height_max:number;
       	coordinates:Array<FbiCoordinateType>;
       	title:string;
       	aliases:string;
@@ -57,7 +57,7 @@ export type FbiType =
       	publication:string;
       	age_range:string;
       	eyes_raw:string;
-        caution:string;
+        	caution:string;
       	path:string;
       	complexion:string;
       	hair_raw:string;
@@ -67,10 +67,10 @@ export type FbiType =
       	hair:string;
       	age_min:number;
       	languages:string;
-        status:string;
+        	status:string;
       	field_offices:Array<String>;
-        files:Array<FbiFileType>;
-        subjects:Array<String>;
+        	files:Array<FbiFileType>;
+        	subjects:Array<String>;
       	possible_countries:Array<String>;
       	occupations:Array<String>;
       	build:string;
