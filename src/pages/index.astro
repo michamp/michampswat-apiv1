@@ -32,7 +32,13 @@ var thumbImageUrls:Array<string> = [];
 // News Pagination
 var iterationRange:number = 20;
 var startIndex:number = 0; 
-var endIndex:number = iterationRange;
+var endIndex:number = 19;
+
+var calculatedNumOfPages:number = 0;
+var remainder:number = 0;
+var pageIndex:number = 0;
+var index:number = 0;
+
 var newsPages:Array<Array<NewsDataInterface>> = [];
 var aPage:Array<NewsDataInterface> = [];
 
@@ -134,27 +140,33 @@ try
 	});
 	
 
+	remainder = fbiNewsArray.length % iterationRange;	
 
-	fbiNewsArray.map((article:NewsDataInterface,index:number) => {
-		if(startIndex  <= index && index < endIndex)
+	calculatedNumOfPages = 
+					(fbiNewsArray.length - remainder) / iterationRange;
+
+	if(remainder > 0)
+	{
+		calculatedNumOfPages += 1;
+	}
+
+	for(pageIndex = 1; pageIndex <= calculatedNumOfPages; pageIndex++)
+	{
+		for(index = startIndex; index <= endIndex; index++)
 		{
-			aPage.push(article);
+			if(index < fbiNewsArray.length)
+			{
+				aPage.push(fbiNewsArray[index]);
+
+			}
 		}
-		else
-		{
-			newsPages.push(aPage);
-			aPage = [];
-			startIndex += iterationRange;
-			endIndex += iterationRange;
-		}
-	});
+		newsPages.push(aPage);
+		aPage = [];
+		startIndex += iterationRange;
+		endIndex += iterationRange;
+	}
 	
-
-	
-
-	
-
-	
+		
 	
 } 
 catch (error) 
