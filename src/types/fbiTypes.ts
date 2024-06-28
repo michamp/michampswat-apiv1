@@ -52,7 +52,7 @@ export type FbiType =
         	height_max:number;
       	coordinates:Array<FbiCoordinateType>;
       	title:string;
-      	aliases:string;
+      	aliases:Array<String>;
       	eyes:string;
       	publication:string;
       	age_range:string;
@@ -66,7 +66,7 @@ export type FbiType =
       	locations:string;
       	hair:string;
       	age_min:number;
-      	languages:string;
+      	languages:Array<String>;
         	status:string;
       	field_offices:Array<String>;
         	files:Array<FbiFileType>;

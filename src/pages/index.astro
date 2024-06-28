@@ -402,7 +402,8 @@ catch (error)
 															<div class="text-left md:text-left mt-3">
 																<div>
 								
-																	<h3 class="uppercase font-bold text-lg text-white">Date(s) of Birth Used: {fugitive.dates_of_birth_used}</h3>
+																	<h3 class="uppercase font-bold text-lg text-white">Aliases: {fugitive.aliases != undefined ? fugitive.aliases.join() : ""}</h3>
+																	<h3 class="uppercase font-bold text-lg text-white">Date(s) of Birth Used: {fugitive.dates_of_birth_used != undefined ? fugitive.dates_of_birth_used.join() : ""}</h3>
 																	<h3 class="uppercase font-bold text-lg text-white">Place of Birth: {fugitive.place_of_birth}</h3>
 																	<h3 class="uppercase font-bold text-lg text-white">Hair: {fugitive.hair}</h3>
 																	<h3 class="uppercase font-bold text-lg text-white">Eyes: {fugitive.eyes}</h3>
@@ -411,7 +412,7 @@ catch (error)
 																	<h3 class="uppercase font-bold text-lg text-white">Sex: {fugitive.sex}</h3>
 																	<h3 class="uppercase font-bold text-lg text-white">Race: {fugitive.race}</h3>
 																	<h3 class="uppercase font-bold text-lg text-white">Nationality: {fugitive.nationality}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Languages: {fugitive.languages}</h3>
+																	<h3 class="uppercase font-bold text-lg text-white">Languages: {fugitive.languages != undefined ? fugitive.languages.join() : ""}</h3>
 									                        
 																</div>
 															</div>
