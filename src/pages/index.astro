@@ -2,19 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 
-
-
-try 
-{
-	
-} 
-catch (error) 
-{
-  console.error(error);
-  
-}
-
-
 ---
 
 <Layout title="MICHAMP SWAT API V1 Template">
@@ -60,12 +47,14 @@ catch (error)
     		foreign governments and international law enforcement organizations. Currently MICHAMP SWAT offers access to the FBI top ten most wanted data set and FBI in News
     		news feed. The data displayed in this template static and should not to be considered the current listing of fugitives being sought by the 
     		FBI. MICHAMP SWAT has an API which monitors the FBI's data services and updates the current fugitve listing hourly. 
-    		You can find it at <a href="https://rapidapi.com/michamp/api/michamp-swat" target="_blank">MICHAMP SWAT API</a>
-    		
-    	 	This is a starter Astro template to aid in setting up a admin dashboard web app  </p>
-    	
-		<h3 class="font-bold uppercase text-2xl text-white mt-20 ml-10 mb-5"></h3>
-    	<p class="text-xl text-white mt-10 ml-10 mb-5">This is a starter Astro template to aid in setting up a admin dashboard web app.</p>
+    	</p>
+    	<p class="text-xl text-white mt-10 ml-10 mb-5">	
+    		This is a starter Astro template to aid in setting up an admin dashboard web app to process data provided by the endpoints hosted at 
+    	 	SWAT API on RapidAPI.
+    		<br/>
+    		<br/>
+    	 	You can find it at:&nbsp; <a class="btn btn-primary btn-outline hover:bg-primary" href="https://rapidapi.com/michamp/api/michamp-swat" target="_blank">MICHAMP SWAT API</a>
+    	</p>
     	
 		</div>
     
@@ -161,30 +150,30 @@ catch (error)
 	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Pages<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
-		    <li><a href="/login"><Icon name="carbon:login" />Login</a></li>
-		    <li><a href="/signup"><Icon name="ri:user-3-line" />Sign-up</a></li>
-		    <li><a href="/dashboard"><Icon name="carbon:dashboard" />Dashboard</a></li>
+		    <li ><a href="/login" class="hover:bg-primary"><Icon name="carbon:login" />Login</a></li>
+		    <li><a href="/signup" class="hover:bg-primary"><Icon name="ri:user-3-line" />Sign-up</a></li>
+		    <li><a href="/dashboard" class="hover:bg-primary"><Icon name="carbon:dashboard" />Dashboard</a></li>
 	    </details>
 	    
 	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Section 1<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
-		    <li><a>Sidebar Item 1</a></li>
-		    <li><a>Sidebar Item 2</a></li>
+		    <li><a class="hover:bg-primary">Sidebar Item 1</a></li>
+		    <li><a class="hover:bg-primary">Sidebar Item 2</a></li>
 	    </details>
 	    
 	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Section 2<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
-		    <li><a>Sidebar Item 1</a></li>
-		    <li><a>Sidebar Item 2</a></li>
+		    <li><a class="hover:bg-primary">Sidebar Item 1</a></li>
+		    <li><a class="hover:bg-primary">Sidebar Item 2</a></li>
 	    </details>
 	    
 	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Section 3<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
-		    <li><a>Sidebar Item 1</a></li>
-		    <li><a>Sidebar Item 2</a></li>
+		    <li><a class="hover:bg-primary">Sidebar Item 1</a></li>
+		    <li><a class="hover:bg-primary">Sidebar Item 2</a></li>
 	    </details>
     </ul>
 
