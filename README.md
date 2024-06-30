@@ -5,8 +5,8 @@ MICHAMP SWAT (Security Warnings Aggregated Technology) Template API Version 1 - 
 
 Install 
 --
-1. Clone repo to a local directory
-2. In root of the template directory run 
+1. Clone repo to a local directory.
+2. In root of the template directory run. 
 
 ```yarn``` 
 
@@ -16,11 +16,13 @@ Install
 
 Either of the above three commands will install the dependencies contained in the package.json file.
  
-3. After all dependencies are installed run 
+3. After all dependencies are installed run. 
 
 ```yarn run dev```
 
 ```npm run dev```
+ 
+ Either of the above two commands will start the astro server instance. 
  
  4. Open a browser and navigate to ```http://localhost:4321```
  
