@@ -144,37 +144,44 @@ import { Icon } from 'astro-icon/components';
   <div class="drawer-side mt-11">
     <label for="template-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
 	
-    <ul class="menu bg-base-200 min-h-full w-80 p-4">
+    <ul class="menu bg-base-200 min-h-full w-80 p-4 rounded-box ">
     	 <li><a href="/"><img class="size-16" src="/logo.png" /></a></li>
-		    
-	    <details class="dropdown mb-3">
-		 <summary class="btn text-lg">Pages<Icon name="carbon:caret-down" class="pl-1"/></summary> 
-		    <!-- Sidebar content here -->
-		    <li ><a href="/login" class="hover:bg-primary"><Icon name="carbon:login" />Login</a></li>
-		    <li><a href="/signup" class="hover:bg-primary"><Icon name="ri:user-3-line" />Sign-up</a></li>
-		    <li><a href="/dashboard" class="hover:bg-primary"><Icon name="carbon:dashboard" />Dashboard</a></li>
-	    </details>
+		  
+		 <li >  
+		    <details class="dropdown">
+			 <summary class="btn text-lg ">Pages</summary> 
+			    <!-- Sidebar content here -->
+			    <li class="flex items-center justify-center"><a href="/login" class="hover:bg-primary"><Icon name="carbon:login" />Login</a></li>
+			    <li class="flex items-center justify-center"><a href="/signup" class="hover:bg-primary"><Icon name="ri:user-3-line" />Sign-up</a></li>
+			    <li class="flex items-center justify-center"><a href="/dashboard" class="hover:bg-primary"><Icon name="carbon:dashboard" />Dashboard</a></li>
+		    </details>
+	    </li>
+	    <li>
+		    <details class="dropdown">
+			 <summary class="btn text-lg">Section 1</summary> 
+			    <!-- Sidebar content here -->
+			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 1</a></li>
+			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 2</a></li>
+		    </details>
+	    </li>
 	    
-	    <details class="dropdown mb-3">
-		 <summary class="btn text-lg">Section 1<Icon name="carbon:caret-down" class="pl-1"/></summary> 
-		    <!-- Sidebar content here -->
-		    <li><a class="hover:bg-primary">Sidebar Item 1</a></li>
-		    <li><a class="hover:bg-primary">Sidebar Item 2</a></li>
-	    </details>
+	    <li >
+		    <details class="dropdown">
+			 <summary class="btn text-lg">Section 2</summary> 
+			    <!-- Sidebar content here -->
+			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 1</a></li>
+			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 2</a></li>
+		    </details>
+	    </li>
 	    
-	    <details class="dropdown mb-3">
-		 <summary class="btn text-lg">Section 2<Icon name="carbon:caret-down" class="pl-1"/></summary> 
-		    <!-- Sidebar content here -->
-		    <li><a class="hover:bg-primary">Sidebar Item 1</a></li>
-		    <li><a class="hover:bg-primary">Sidebar Item 2</a></li>
-	    </details>
-	    
-	    <details class="dropdown mb-3">
-		 <summary class="btn text-lg">Section 3<Icon name="carbon:caret-down" class="pl-1"/></summary> 
-		    <!-- Sidebar content here -->
-		    <li><a class="hover:bg-primary">Sidebar Item 1</a></li>
-		    <li><a class="hover:bg-primary">Sidebar Item 2</a></li>
-	    </details>
+	    <li>
+		    <details class="dropdown">
+			 <summary class="btn text-lg">Section 3</summary> 
+			    <!-- Sidebar content here -->
+			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 1</a></li>
+			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 2</a></li>
+		    </details>
+	    </li>
     </ul>
 
   </div>
