@@ -1,172 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
-import type { FbiType,FbiImageType,FbiCoordinateType,FbiFileType } from "../types/fbiTypes.ts";
-
-interface NewsDataInterface 
-{
-	index:string;
-	insertiontime:string;
-	title:string;
-	date:string;
-	link:string;
-
-};
-
-var fbiNews:Array<NewsDataInterface> = [];
-var fbiNewsArray:Array<NewsDataInterface> = [];
-
-var fbiTopTenMostWanted:Array<FbiType> = [];
-var fbiTTMWArray:Array<FbiType> = [];
-
-var numOfAwards:number = 0; 
-var numOfCaptured:number = 0; 
-var numOfLocated:number = 0; 
-var numOfRecovered:number = 0; 
-var numOfSurrendered:number = 0; 
-var numOfDeceased:number = 0; 
-
-var thumbImageUrls:Array<string> = []; 
 
 
-// News Pagination
-var iterationRange:number = 20;
-var startIndex:number = 0; 
-var endIndex:number = 19;
-
-var calculatedNumOfPages:number = 0;
-var remainder:number = 0;
-var pageIndex:number = 0;
-var index:number = 0;
-
-var newsPages:Array<Array<NewsDataInterface>> = [];
-var aPage:Array<NewsDataInterface> = [];
 
 try 
 {
-	const fbiNewsJson:string = Astro.url.origin + "/michamp-fbinews-rapidapi-06202024-1756PM.json";
-
-	const res = await fetch(fbiNewsJson,{
-   headers: {
-      "Content-Type": "application/json",
-    }});
-    
-	fbiNews = await res.json();
-
-	if(fbiNews != undefined && fbiNews.length > 0)
-	{
-		fbiNewsArray = fbiNews.slice(0);
-	}
-	
-
-		
-	const fbiTTJson:string = Astro.url.origin + "/michamp-fbitopten-rapidapi-06172024-1239PM.json";
-
-	const resTTMW = await fetch(fbiTTJson,{
-   headers: {
-      "Content-Type": "application/json",
-    }}); 
-
-	
-	fbiTopTenMostWanted = await resTTMW.json();
-
-	if(fbiTopTenMostWanted != undefined && fbiTopTenMostWanted.length > 0)
-	{
-
-		fbiTTMWArray = fbiTopTenMostWanted.slice(0);
-	}
-	
-	//Build Overview Stats of Current FBI Top Ten 
-	fbiTTMWArray.map((fugitive:FbiType) =>
-	{
-		if(fugitive.reward_text != undefined && fugitive.reward_text != null 
-		   && fugitive.reward_text.length > 0)
-		{
-			numOfAwards++;
-		}
-		
-		// Status field possible values:
-		// na, captured, recovered, located, surrendered, deceased
-		if(fugitive.status != undefined && fugitive.status != null 
-		   && fugitive.status.length > 0)
-		{
-			if(fugitive.status.toLowerCase() === "captured")
-			{
-				numOfCaptured++;
-			}
-			
-			if(fugitive.status.toLowerCase() === "located")
-			{
-				numOfCaptured++;
-			}
-			
-			if(fugitive.status.toLowerCase() === "recovered")
-			{
-				numOfRecovered++;
-			}
-			
-			if(fugitive.status.toLowerCase() === "surrendered")
-			{
-				numOfSurrendered++;
-			}
-			
-			if(fugitive.status.toLowerCase() === "deceased")
-			{
-				numOfDeceased++;
-			}
-			
-
-		}
-		
-		
-	});
-	
-	
-	fbiTTMWArray.map((fugitive:FbiType,index:number) => {
-				       		
-	 	if(fugitive.images != undefined && fugitive.images != null
-		&& fugitive.images.length >= 1)
-		{
-			for(let i = 0; i < fugitive.images.length; i++)	
-			{
-				if(fugitive.images[i].thumb != undefined && fugitive.images[i].thumb.length !== 0)
-				{
-					thumbImageUrls.push(fugitive.images[i].thumb);
-					break;
-				}
-			}		 
-
-		}
-	});
-	
-
-	remainder = fbiNewsArray.length % iterationRange;	
-
-	calculatedNumOfPages = 
-					(fbiNewsArray.length - remainder) / iterationRange;
-
-	if(remainder > 0)
-	{
-		calculatedNumOfPages += 1;
-	}
-
-	for(pageIndex = 1; pageIndex <= calculatedNumOfPages; pageIndex++)
-	{
-		for(index = startIndex; index <= endIndex; index++)
-		{
-			if(index < fbiNewsArray.length)
-			{
-				aPage.push(fbiNewsArray[index]);
-
-			}
-		}
-		newsPages.push(aPage);
-		aPage = [];
-		startIndex += iterationRange;
-		endIndex += iterationRange;
-	}
-	
-		
 	
 } 
 catch (error) 
@@ -201,327 +40,98 @@ catch (error)
           </svg>
         </label>
       </div>
-      <div class="mx-2 flex-1 px-2 text-white"> MICHAMP SWAT API V1 Template</div>
+      <div class="mx-2 flex-1 px-2 text-white"> </div>
       
       <div class=" flex-none ">
-        <details class="dropdown">
-			  <summary class="btn text-2xl">
-			  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5.92A.96.96 0 1 0 12 4a.96.96 0 0 0 0 1.92m0 7.04a.96.96 0 1 0 0-1.92a.96.96 0 0 0 0 1.92M12 20a.96.96 0 1 0 0-1.92a.96.96 0 0 0 0 1.92"/></svg>
-			  </summary>
-			  
-			   <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-4 shadow">
-				   <li>
-						<a href="#" class="px-4 py-2 block text-gray-100 hover:bg-gray-800 no-underline hover:no-underline tooltip tooltip-left" data-tip="account"><Icon name="ri:settings-5-line" class="text-2xl" /></a>
-	            </li>
-								
-					<li>
-						<a href="/michamp-fbitopten-rapidapi-06172024-1239PM.json" class="px-4 py-2 block text-gray-100 hover:bg-gray-800 no-underline hover:no-underline tooltip tooltip-left" data-tip="data" target="_blank"><Icon name="ri:database-2-line" class="text-2xl" /></a>
-					</li>
-							
-					<li><hr class="border-t mx-2 border-gray-400"></li>
-							
-					<li>
-						<a href="#" class="px-4 py-2 block text-gray-100 hover:bg-gray-800 no-underline hover:no-underline tooltip tooltip-left" data-tip="logout"><Icon name="ri:logout-box-line" class="text-2xl" /></a>
-					</li>
-					
-					
-			   </ul>
-		  </details>
+        <a href="/login" class="px-4 py-2 block text-gray-100 hover:bg-gray-800 no-underline hover:no-underline tooltip tooltip-left" data-tip="login"><Icon name="carbon:login" class="text-2xl" /></a>
+        
+        
         
       </div>
     </div>
     
     
     
+	<div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal items-center justify-center">
+		   
+		<div class="mt-10">
+		<h1 class="font-bold uppercase text-2xl text-primary mt-20 ml-10 mb-5">MICHAMP SWAT API V1 Template</h1>
+    	<p class="text-xl text-white mt-10 ml-10 mb-5">MICHAMP SWAT (Security Warnings Aggregated Technology) improves access to critical data and information provided by the United States government, 
+    		foreign governments and international law enforcement organizations. Currently MICHAMP SWAT offers access to the FBI top ten most wanted data set and FBI in News
+    		news feed. The data displayed in this template static and should not to be considered the current listing of fugitives being sought by the 
+    		FBI. MICHAMP SWAT has an API which monitors the FBI's data services and updates the current fugitve listing hourly. 
+    		You can find it at <a href="https://rapidapi.com/michamp/api/michamp-swat" target="_blank">MICHAMP SWAT API</a>
+    		
+    	 	This is a starter Astro template to aid in setting up a admin dashboard web app  </p>
+    	
+		<h3 class="font-bold uppercase text-2xl text-white mt-20 ml-10 mb-5"></h3>
+    	<p class="text-xl text-white mt-10 ml-10 mb-5">This is a starter Astro template to aid in setting up a admin dashboard web app.</p>
+    	
+		</div>
     
-    
-    
-    
-    
-    <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal ">
-
-			<!--Console Content-->
-		   <h1 class="font-bold uppercase text-2xl text-white mt-10 mb-5">FBI Top Ten Most Wanted</h1>
-		   <h3 class="font-bold uppercase text-xl text-red-600">Status</h3>
-			<div class="flex flex-wrap">
-
-                <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:money-dollar-box-line" class="text-white text-3xl" /></div>
-                            </div>
-                            
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Awards Available</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfAwards}<span class="text-green-500"><!--<i class="fas fa-caret-up"></i>--></span></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
-                <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:lock-2-line" class="text-white text-3xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Captured</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfCaptured}<span class="text-pink-500"><!--<i class="fas fa-exchange-alt"></i>--></span></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
-                <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:kanban-view-2" class="text-white text-3xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Recovered</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfRecovered}<span class="text-yellow-600"><!--<i class="fas fa-caret-up"></i>--></span></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
-                <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:flag-fill" class="text-white text-3xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Surrendered</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfSurrendered}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/Metric Card-->
-                </div>
-                
-                
-            </div>
-
-
-			<!--Divider-->
-			<div class="divider"></div>
-
-	<!-- START: FBI Top Ten Content-->
-			
-			<div id="topten" class="flex flex-wrap">
-
-		                <h3 class="font-bold uppercase text-xl text-red-600">Top Ten</h3>
-		                {
-		
-				       		fbiTTMWArray.map((fugitive:FbiType,index:number) => (
-				       		
-					       		
-								<div class="w-full p-3">
-							            <!--Fugitive Card-->
-							            <div id={`fugitive-${index}`} class="bg-black rounded border border-gray-600  shadow p-2 h-50 hover:bg-red-600 hover:cursor-pointer" 
-							            	 onclick={`fugitive_modal_${index}.showModal()`}>
-							                <div class="flex  items-center justify-center flex-col md:flex-row">
-							               
-							                    
-														<div class="flex-shrink pr-4">
-							                        <div class="rounded p-3">
-							                        <a class="tooltip tooltip-bottom" data-tip="FBI" href={fugitive.url} target="_blank" >
-								                        <img class="w-16 md:w-32 lg:w-48" src={thumbImageUrls[index]} />
-							                        </a>
-							                        </div>
-							                    </div>
-							                    
-							                    <div class="flex-1 text-center md:text-center">
-															<div class="flex flex-col">
-																
-
-								                    		<h5 class="font-bold uppercase text-xl text-white bg-red-600">{fugitive.warning_message}</h5>							                    		
-									                    	<h3 class="mt-3 font-bold text-3xl text-white">{fugitive.title}</h3>
-																<h3 class=" uppercase font-bold  text-red-500 bg-white">STATUS: [{fugitive.status == "na" ? "NOT APPREHENDED" : fugitive.status}]</h3>
-								                        <h5 class="mt-3 font-bold uppercase text-white">PUBLISHED: {fugitive.publication}</h5>
-								                        <h5 class="font-bold uppercase text-white">MODIFIED: {fugitive.modified}</h5>
-								                        <h5 class="mt-3  uppercase text-white">{fugitive.description}</h5>
-								                        
-															</div>
-
-							                   
-								
-							           
-							                    </div>
-							                </div>
-							            </div>
-							            <!--/Fugitive Card-->
-							        </div>
-								    ))
-								}
-				
-								{
-		
-				       			fbiTTMWArray.map((fugitive:FbiType,index:number) => (
-											
-											<dialog id={`fugitive_modal_${index}`} class="modal">
-											  <div class="modal-box w-11/12 max-w-5xl">
-											    
-											    
-
-							
-												    <div class="grid grid-cols-1 gap-1">
-														 <div>
-												    	 	<img class="w-16 md:w-32 lg:w-48" src={thumbImageUrls[index]} />!
-												    	 </div>													    
-													    <div>
-													    <div class="text-right pb-3">
-																		<button class="btn btn-square bg-white border-white ">
-																			<a class="tooltip tooltip-bottom" data-tip="FBI" href={fugitive.url} target="_blank">
-																				<Icon name="ri:folder-info-fill" class="text-3xl text-red-600" />
-																			</a>
-																		</button>
-															</div>
-														    
-														   <div class="text-center md:text-center">
-																<div>
-																	
-									                    		<h5 class="font-bold uppercase text-xl text-red-500 bg-red-500 text-white">{fugitive.warning_message}</h5>							                    		
-										                    	<h3 class="font-bold text-3xl text-white">{fugitive.title}</h3>
-																	<h3 class="uppercase font-bold text-red-500 bg-white">STATUS: [{fugitive.status == "na" ? "NOT APPREHENDED" : fugitive.status}]</h3>
-									                        <h5 class="font-bold uppercase text-white">PUBLISHED: {fugitive.publication}</h5>
-									                        <h5 class="font-bold uppercase text-white">MODIFIED: {fugitive.modified}</h5>
-									                        <h5 class="uppercase text-white">{fugitive.description}</h5>
-									                        
-																</div>
-															</div>
-															
-															<div class="text-left md:text-left mt-3">
-																<div>
-								
-																	<h3 class="uppercase font-bold text-lg text-white">Aliases: {fugitive.aliases != undefined ? fugitive.aliases.join() : ""}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Date(s) of Birth Used: {fugitive.dates_of_birth_used != undefined ? fugitive.dates_of_birth_used.join() : ""}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Place of Birth: {fugitive.place_of_birth}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Hair: {fugitive.hair}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Eyes: {fugitive.eyes}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Height: Approximately {fugitive.height_min} to {fugitive.height_max}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Weight: {fugitive.weight}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Sex: {fugitive.sex}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Race: {fugitive.race}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Nationality: {fugitive.nationality}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Languages: {fugitive.languages != undefined ? fugitive.languages.join() : ""}</h3>
-									                        
-																</div>
-															</div>
-															
-															<div class="text-left md:text-left mt-3">
-																<div>
-								
-																	<h3 class="text-center bg-red-600 uppercase font-bold text-lg text-white">Rewards</h3>
-																	<h3 class="text-white" set:html={fugitive.reward_text} />
-																	
-																</div>
-															</div>
-															
-															<div class="text-left md:text-left mt-3">
-																<div>
-																
-																	<h3 id={`caution-${index}`} class="text-center bg-red-600 uppercase font-bold text-lg text-white">Caution</h3>
-																	<h3 class="text-white" set:html={fugitive.caution} />
-					
-																</div>
-															</div>
-														    
-														    <div class="modal-action">
-														      <form method="dialog">
-														        <!-- if there is a button, it will close the modal -->
-														        <button class="btn border border-gray-600 ">Close</button>
-														      </form>
-														    </div>
-														    
-													    </div>
-												    
-											    </div>
-											  </div>
-											</dialog>
-
-								))
-							}
-		                
+    	<div>
+		<h1 class="font-bold uppercase text-2xl text-primary mt-10 ml-10 mb-2">Features</h1>
+		</div>
+    	<div class="grid grid-cols-1 md:grid-cols-2 gap-6 ml-10">
+	    	<div class="card bg-base-100 w-96 shadow-xl text-white">
+			  <div class="card-body">
+			    <h2 class="card-title">Astro</h2>
+			    <p>Built on Astro's super fast, easy to setup, content driven framework. Astro is a static site generation 
+			    tool. It comes with a means to quickly build content driven websites. You can use markdown to build a full blog website or 
+			    integrate with multiple UI frameworks like React,Preact, Lit and others (<a class="font-bold" href="https://docs.astro.build/en/getting-started/">Getting Started</a>) 
+			    </p>
+			    <div class="card-actions justify-end">
+			      <a class="btn btn-primary" href="https://astro.build/" target="_blank">Docs</a>
+			    </div>
+			  </div>
 			</div>
-<!-- END: FBI Top Ten Content-->
 			
-			<!--Divider-->
-			<div class="divider"></div>
-			
-<!-- START: FBI In News Content-->
-
-
-			<div id="fbinews" class="grid grid-col-1">
-				<h3 class="font-bold uppercase text-xl text-red-600">FBI In News</h3>
-				<h5 class="uppercase text-lg text-white" style={{fontWeight: 200}}>Total Posts: {fbiNewsArray.length}</h5>
-
-
-		               {
-								newsPages.map((page:any,index:number) => (
-										
-								      <div id={`page-${index+1}`} class="hidden grid grid-col-1 m:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
-						       		{page.map((article:NewsDataInterface,index:number) => (
-						       		
-						       		
-		
-									            <!--News Article Card-->
-									            <div class="bg-black border-slate-200 rounded border-0 
-									            shadow p-4 hover:bg-red-400/50 hover:shadow-red-400/50 h-52 hover:cursor-pointer 
-									            tooltip tooltip-top"  data-tip={article.title}
-									            onclick={`window.open('${article.link}')`}>
-														
-														 <div class="absolute top-0 right-0  text-white text-2xl ">
-														 	<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m16.004 9.414l-8.607 8.607l-1.414-1.414L14.59 8H7.003V6h11v11h-2z"/></svg>
-														 </div>		
-									                
-									                <div class="text-center items-center justify-center ">
-											                     <h5 class="font-bold uppercase text-red-500" style={{ fontWeight: 200}}><a href={article.link} target="_blank">{article.date}</a></h5>
-										                    		<h3 class="font-bold text-2xl text-white" style={{ fontWeight: 200}}><a href={article.link} target="_blank">{article.title.substring(0,100)}{article.title.length > 100 ? "..." : ""}</a></h3>
-		
-									                </div>
-									                
-									            </div>
-									            <!--/News Article Card-->
-									        
-										    ))}
-									 </div>
-								    ))
-								    
-								    
-								}
-								
-								<div class="flex overflow-scroll mt-3 md:items-center md:justify-center">
-									<div class="join">
-										{
-		
-		
-											newsPages.map((page:any,index:number) => (
-												
-												<input id={`pageBtn-${index+1}`} class="join-item btn btn-square" type="radio" name="options" aria-label={`${index+1}`} />
-												
-										      
-										    ))
-										    
-										    
-										}
-									</div>
-  								</div>
-
-		                
+			<div class="card bg-base-100 w-96 shadow-xl text-white">
+			  <div class="card-body">
+			    <h2 class="card-title">Tailwind CSS</h2>
+			    <p>Tailwind is a mature CSS framework, battle tested and very comprehensive CSS library.</p>
+			    <ul class="list-disc">
+			    	<li>Great Layout options </li>
+			    	<li>Professional look and feel</li>
+			    	<li>Responsively Design </li>
+			    	<li>Very Widely Used</li>
+			    	<li>Great Docs</li>
+			    </ul>
+			    <div class="card-actions justify-end">
+			      <a class="btn btn-primary" href="https://tailwindcss.com/" target="_blank">Docs</a>
+			    </div>
+			  </div>
 			</div>
-			<!-- END: FBI In News Content-->
-    
-		<!--/ Console Content-->
-    
+			
+			<div class="card bg-base-100 w-96 shadow-xl text-white">
+			  <div class="card-body">
+			    <h2 class="card-title">DaisyUI</h2>
+			    <p>DaisyUI is a user interface framework built on Tailwinds.</p>
+			    <ul class="list-disc">
+			    	<li>Clean Components & Code</li>
+			    	<li>Well Documented</li>
+			    	<li>Widely Used</li>
+			    </ul>
+			    <div class="card-actions justify-end">
+			      <a class="btn btn-primary" href="https://daisyui.com/" target="_blank">Docs</a>
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="card bg-base-100 w-96 shadow-xl text-white">
+			  <div class="card-body">
+			    <h2 class="card-title">Astro Icon</h2>
+			    <p>Astro Icon is already integrated into this template. Access to thousands of icons via
+			    the <a href="https://icon-sets.iconify.design/">Iconify's</a> large set of icons.</p>
+			    
+			    <div class="card-actions justify-end">
+			      <a class="btn btn-primary" href="https://www.astroicon.dev/" target="_blank">Docs</a>
+			    </div>
+			  </div>
+			</div>
+			
+			
+    	</div>
     
     
     
@@ -546,24 +156,31 @@ catch (error)
     <label for="template-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
 	
     <ul class="menu bg-base-200 min-h-full w-80 p-4">
-    	 <li><a href="#"><img class="size-16" src="favicon.png" /></a></li>
+    	 <li><a href="/"><img class="size-16" src="/logo.png" /></a></li>
 		    
+	    <details class="dropdown mb-3">
+		 <summary class="btn text-lg">Pages<Icon name="carbon:caret-down" class="pl-1"/></summary> 
+		    <!-- Sidebar content here -->
+		    <li><a href="/login"><Icon name="carbon:login" />Login</a></li>
+		    <li><a href="/signup"><Icon name="ri:user-3-line" />Sign-up</a></li>
+		    <li><a href="/dashboard"><Icon name="carbon:dashboard" />Dashboard</a></li>
+	    </details>
 	    
-	    <details class="dropdown">
+	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Section 1<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
 		    <li><a>Sidebar Item 1</a></li>
 		    <li><a>Sidebar Item 2</a></li>
 	    </details>
 	    
-	    <details class="dropdown">
+	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Section 2<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
 		    <li><a>Sidebar Item 1</a></li>
 		    <li><a>Sidebar Item 2</a></li>
 	    </details>
 	    
-	    <details class="dropdown">
+	    <details class="dropdown mb-3">
 		 <summary class="btn text-lg">Section 3<Icon name="carbon:caret-down" class="pl-1"/></summary> 
 		    <!-- Sidebar content here -->
 		    <li><a>Sidebar Item 1</a></li>
