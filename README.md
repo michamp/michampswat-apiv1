@@ -7,12 +7,15 @@ Install
 --
 1. Clone repo to a local directory
 2. In root of the template directory run 
+
 ```yarn``` 
 
 ```yarn install``` 
 
 ```npm i```
 
+Either of the above three commands will install the dependencies contained in the package.json file.
+ 
 3. After all dependencies are installed run 
 
 ```yarn run dev```
