@@ -246,67 +246,50 @@ catch (error)
 			<div class="flex flex-wrap">
 
                 <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:money-dollar-box-line" class="text-white text-3xl" /></div>
-                            </div>
-                            
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Awards Available</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfAwards}<span class="text-green-500"></span></h3>
-                            </div>
-                        </div>
-                    </div>
+
+                    	<div class="stats shadow">
+							  <div class="stat">
+							    <div class="stat-title">Awards</div>
+							    <div class="stat-value">{numOfAwards}</div>
+							    <div class="stat-desc">Number of fugitives with awards available</div>
+							  </div>
+							</div>
 
                 </div>
                 <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:lock-2-line" class="text-white text-3xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Captured</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfCaptured}<span class="text-pink-500"></span></h3>
-                            </div>
-                        </div>
-                    </div>
+
+                    	<div class="stats shadow">
+							  <div class="stat">
+							    <div class="stat-title">Captured</div>
+							    <div class="stat-value">{numOfCaptured}</div>
+							    <div class="stat-desc">Number of captured of the FBI top ten most wanted</div>
+							  </div>
+							</div>
 
                 </div>
                 <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:kanban-view-2" class="text-white text-3xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Recovered</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfRecovered}<span class="text-yellow-600"></span></h3>
-                            </div>
-                        </div>
-                    </div>
+
+                    	<div class="stats shadow">
+							  <div class="stat">
+							    <div class="stat-title">Recovered</div>
+							    <div class="stat-value">{numOfRecovered}</div>
+							    <div class="stat-desc">Number of recovered fugitives</div>
+							  </div>
+							</div>
 
                 </div>
                 <div class="w-full md:w-1/4 p-3">
-                    <!--Metric Card-->
-                    <div class="bg-black border border-gray-600 rounded shadow p-2">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-shrink pr-4">
-                                <div class="rounded p-3 bg-slate-600"><Icon name="ri:flag-fill" class="text-white text-3xl" /></div>
-                            </div>
-                            <div class="flex-1 text-center md:text-center">
-                                <h5 class="font-bold uppercase text-white">Surrendered</h5>
-                                <h3 class="font-bold text-3xl text-gray-600">{numOfSurrendered}</h3>
-                            </div>
-                        </div>
-                    </div>
+
+                    	<div class="stats shadow">
+							  <div class="stat">
+							    <div class="stat-title">Surrendered</div>
+							    <div class="stat-value">{numOfSurrendered}</div>
+							    <div class="stat-desc">Number of surrendered fugitives</div>
+							  </div>
+							</div>
 
                 </div>
-                
+     
                 
             </div>
 
@@ -325,41 +308,32 @@ catch (error)
 				       		
 					       		
 								<div class="w-full p-3">
-							            <!--Fugitive Card-->
-							            <div id={`fugitive-${index}`} class="bg-black rounded border border-gray-600  shadow p-2 h-50 hover:bg-red-600 hover:cursor-pointer" 
-							            	 onclick={`fugitive_modal_${index}.showModal()`}>
-							                <div class="flex  items-center justify-center flex-col md:flex-row">
-							               
-							                    
-														<div class="flex-shrink pr-4">
-							                        <div class="rounded p-3">
-							                        <a class="tooltip tooltip-bottom" data-tip="FBI" href={fugitive.url} target="_blank" >
-								                        <img class="w-16 md:w-32 lg:w-48" src={thumbImageUrls[index]} />
-							                        </a>
-							                        </div>
-							                    </div>
-							                    
-							                    <div class="flex-1 text-center md:text-center">
-															<div class="flex flex-col">
-																
+							           <!--Fugitive Card-->
 
-								                    		<h5 class="font-bold uppercase text-xl text-white bg-red-600">{fugitive.warning_message}</h5>							                    		
-									                    	<h3 class="mt-3 font-bold text-3xl text-white">{fugitive.title}</h3>
-																<h3 class=" uppercase font-bold  text-red-500 bg-white">STATUS: [{fugitive.status == "na" ? "NOT APPREHENDED" : fugitive.status}]</h3>
-								                        <h5 class="mt-3 font-bold uppercase text-white">PUBLISHED: {fugitive.publication}</h5>
-								                        <h5 class="font-bold uppercase text-white">MODIFIED: {fugitive.modified}</h5>
-								                        <h5 class="mt-3  uppercase text-white">{fugitive.description}</h5>
-								                        
-															</div>
-
-							                   
-								
-							           
-							                    </div>
-							                </div>
-							            </div>
-
-							        </div>
+								        <div class="card lg:card-side card-compact lg:card-normal bg-base-100 shadow-xl rounded border border-primary shadow p-2 h-50 hover:bg-primary hover:cursor-pointer mt-2 mb-2"
+								        onclick={`fugitive_modal_${index}.showModal()`}>
+												<figure>
+					
+												     <img class="w-16 md:w-32 lg:w-48" src={thumbImageUrls[index]} alt={fugitive.title}/>
+												  </figure>
+												  <div class="card-body">
+												    <!--<div class="flex flex-col">-->
+																	
+	
+									                    		<h5 class="font-bold uppercase text-xl text-white bg-red-600">{fugitive.warning_message}</h5>							                    		
+										                    	<h3 class="mt-3 font-bold text-3xl text-white">{fugitive.title}</h3>
+																	<h3 class=" uppercase font-bold  text-red-500 bg-white">STATUS: [{fugitive.status == "na" ? "NOT APPREHENDED" : fugitive.status}]</h3>
+									                        <h5 class="mt-3 font-bold uppercase text-white">PUBLISHED: {fugitive.publication}</h5>
+									                        <h5 class="font-bold uppercase text-white">MODIFIED: {fugitive.modified}</h5>
+									                        <h5 class="mt-3  uppercase text-white">{fugitive.description}</h5>
+									                        
+																<!--</div>-->
+												    <div class="card-actions justify-end">
+												      <button class="btn btn-primary" onclick={`fugitive_modal_${index}.showModal()`}>Open</button>
+												    </div>
+												  </div>
+											</div>
+									</div>
 								    ))
 								}
 				
@@ -474,8 +448,8 @@ catch (error)
 						       		
 		
 									            <!--News Article Card-->
-									            <div class="bg-black border-slate-200 rounded border-0 
-									            shadow p-4 hover:bg-red-400/50 hover:shadow-red-400/50 h-52 hover:cursor-pointer 
+									            <div class="border-white rounded border
+									            shadow p-4 hover:bg-primary/50 hover:shadow-primary/50 h-52 hover:cursor-pointer 
 									            tooltip tooltip-top"  data-tip={article.title}
 									            onclick={`window.open('${article.link}')`}>
 														
@@ -545,42 +519,46 @@ catch (error)
   <div class="drawer-side mt-11">
     <label for="template-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
 	
-    <ul class="menu bg-base-200 min-h-full w-80 p-4 rounded-box ">
+    <ul class="menu bg-base-200 min-h-full w-56 p-4 rounded-box ">
     	 <li><a href="/"><img class="size-16" src="/logo.png" /></a></li>
-		  
-		 <li >  
+		 <li><a href="/" class="flex flex-nowrap hover:bg-primary text-left text-2xl tooltip tooltip-right mb-2 mt-2" data-tip="home"><Icon name="ri:home-2-line" /></a></li>
+		 
+		 <li>  
+
 		    <details class="dropdown">
-			 <summary class="btn text-lg ">Pages</summary> 
+			 <summary class="text-lg ">Pages</summary> 
 			    <!-- Sidebar content here -->
-			    <li class="flex items-center justify-center"><a href="/login" class="hover:bg-primary"><Icon name="carbon:login" />Login</a></li>
-			    <li class="flex items-center justify-center"><a href="/signup" class="hover:bg-primary"><Icon name="ri:user-3-line" />Sign-up</a></li>
-			    <li class="flex items-center justify-center"><a href="/dashboard" class="hover:bg-primary"><Icon name="carbon:dashboard" />Dashboard</a></li>
+			    <li><a href="/login" class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="login"><Icon name="carbon:login" />Login</a></li>
+			    <li><a href="/signup" class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sign-up"><Icon name="ri:user-3-line" />Sign-up</a></li>
+			    <li><a href="/dashboard" class="flex flex-nowrap hover:bg-primary text-left  tooltip tooltip-right" data-tip="dashboard"><Icon name="carbon:dashboard" />Dashboard</a></li>
 		    </details>
 	    </li>
 	    <li>
 		    <details class="dropdown">
-			 <summary class="btn text-lg">Section 1</summary> 
+			 <summary class="text-lg">Menu Section 1</summary> 
 			    <!-- Sidebar content here -->
-			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 1</a></li>
-			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 2</a></li>
+			    <li><a class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sidemenuitem">Sidebar Menu Item 1</a></li>
+			    <li><a class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sidemenuitem">Sidebar Menu Item 2</a></li>
+		    	 
+		    
 		    </details>
 	    </li>
 	    
 	    <li >
 		    <details class="dropdown">
-			 <summary class="btn text-lg">Section 2</summary> 
+			 <summary class="text-lg">Menu Section 2</summary> 
 			    <!-- Sidebar content here -->
-			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 1</a></li>
-			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 2</a></li>
+			    <li><a class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sidemenuitem">Sidebar Menu Item 1</a></li>
+			    <li><a class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sidemenuitem">Sidebar Menu Item 2</a></li>
 		    </details>
 	    </li>
 	    
 	    <li>
 		    <details class="dropdown">
-			 <summary class="btn text-lg">Section 3</summary> 
+			 <summary class="text-lg">Menu Section 3</summary> 
 			    <!-- Sidebar content here -->
-			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 1</a></li>
-			    <li class="flex items-center justify-center"><a class="hover:bg-primary">Sidebar Item 2</a></li>
+			    <li><a class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sidemenuitem">Sidebar Menu Item 1</a></li>
+			    <li><a class="flex flex-nowrap hover:bg-primary text-left tooltip tooltip-right" data-tip="sidemenuitem">Sidebar Menu Item 2</a></li>
 		    </details>
 	    </li>
     </ul>
