@@ -6,13 +6,13 @@ MICHAMP SWAT (Security Warnings Aggregated Technology) Template API Version 1 - 
 Install 
 --
 1. Clone repo to a local directory.
-2. In root of the template directory run. 
+2. In root of the template directory run either of the below commands. 
 
 ```yarn``` 
 
 ```yarn install``` 
 
-```npm i```
+```npm install```
 
 Either of the above three commands will install the dependencies contained in the package.json file.
  
