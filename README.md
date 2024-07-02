@@ -1,3 +1,7 @@
+
+![People](/public/diffuse-people-walking.jpg)
+
+
 # MICHAMP SWAT API V1 Template
 MICHAMP SWAT (Security Warnings Aggregated Technology) Template API Version 1 - Free
 
@@ -45,4 +49,9 @@ To integrate with RapidAPI change the fetch instructions at the top of the src/p
 
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/michamp/michampswat-apiv1)
+
+
+
+<a href="https://www.freepik.com/free-photo/diffuse-people-walking_949081.htm#fromView=search&page=1&position=3&uuid=f98c3d9a-603f-4072-a70e-cbbfa7ed68af">Image by photoangel on Freepik</a>
+
 
