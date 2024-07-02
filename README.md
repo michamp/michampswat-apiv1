@@ -1,5 +1,5 @@
 
-![People](/public/diffuse-people-walking-thin.jpg)
+![People](/public/man-hoodie-subway-small.jpg)
 
 
 # MICHAMP SWAT API V1 Template
