@@ -52,6 +52,6 @@ To integrate with RapidAPI change the fetch instructions at the top of the src/p
 
 
 
-<a href="https://www.freepik.com/free-photo/diffuse-people-walking_949081.htm#fromView=search&page=1&position=3&uuid=f98c3d9a-603f-4072-a70e-cbbfa7ed68af">Image by photoangel on Freepik</a>
+<a href="https://www.freepik.com/free-photo/man-from-back-subway-people-metro_13413026.htm#fromView=search&page=1&position=6&uuid=170ff172-2667-496b-9780-132b6dba8596">Image by teksomolika on Freepik</a>
 
 
