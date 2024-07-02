@@ -359,8 +359,10 @@ catch (error)
 														        </button>
 														      </form>
 														    </div>
+														 
+				
 														 <div>
-												    	 	<img class="w-16 md:w-32 lg:w-48" src={thumbImageUrls[index]} />!
+												    	 	<img class="w-16 md:w-32 lg:w-48" src={thumbImageUrls[index]} />
 												    	 </div>													    
 													    <div>
 													    <div class="text-right pb-3">
@@ -387,24 +389,6 @@ catch (error)
 															<div class="text-left md:text-left mt-3">
 																<div>
 								
-																	<h3 class="uppercase font-bold text-lg text-white">Aliases: {fugitive.aliases != undefined ? fugitive.aliases.join() : ""}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Date(s) of Birth Used: {fugitive.dates_of_birth_used != undefined ? fugitive.dates_of_birth_used.join() : ""}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Place of Birth: {fugitive.place_of_birth}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Hair: {fugitive.hair}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Eyes: {fugitive.eyes}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Height: Approximately {fugitive.height_min} to {fugitive.height_max}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Weight: {fugitive.weight}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Sex: {fugitive.sex}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Race: {fugitive.race}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Nationality: {fugitive.nationality}</h3>
-																	<h3 class="uppercase font-bold text-lg text-white">Languages: {fugitive.languages != undefined ? fugitive.languages.join() : ""}</h3>
-									                        
-																</div>
-															</div>
-															
-															<div class="text-left md:text-left mt-3">
-																<div>
-								
 																	<h3 class="text-center bg-red-600 uppercase font-bold text-lg text-white">Rewards</h3>
 																	<h3 class="text-white" set:html={fugitive.reward_text} />
 																	
@@ -419,6 +403,38 @@ catch (error)
 					
 																</div>
 															</div>
+															
+															
+															<div class="text-left md:text-left mt-3">
+																<div>
+																	<div class="card card-bordered border-red-500 bg-base-100 w-full shadow-2xl">
+														  
+																	  <div class="card-body">
+																	    <h2 class="card-title bg-red-600 font-bold text-2xl text-white">Physical Description</h2>
+																	    
+																				<h3 class="uppercase font-bold text-lg text-white">Aliases: {fugitive.aliases != undefined ? fugitive.aliases.join() : ""}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Date(s) of Birth Used: {fugitive.dates_of_birth_used != undefined ? fugitive.dates_of_birth_used.join() : ""}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Place of Birth: {fugitive.place_of_birth}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Hair: {fugitive.hair}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Eyes: {fugitive.eyes}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Height: Approximately {fugitive.height_min} to {fugitive.height_max}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Weight: {fugitive.weight}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Sex: {fugitive.sex}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Race: {fugitive.race}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Nationality: {fugitive.nationality}</h3>
+																				<h3 class="uppercase font-bold text-lg text-white">Languages: {fugitive.languages != undefined ? fugitive.languages.join() : ""}</h3>
+												                        
+																	    
+																	  </div>
+																	</div>
+																	
+																</div>
+															</div>
+															
+															
+															
+															
+															
 														    
 														    
 														    
