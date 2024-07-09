@@ -5,7 +5,7 @@
 # MICHAMP SWAT API V1 Template
 MICHAMP SWAT (Security Warnings Aggregated Technology) Template API Version 1 - Free
 
-[DOCS](https://michamp.com/michampdocs/cd)
+[DOCS](https://michamp.com/michampdocs/)
 
 [DEMO](https://mellow-florentine-d6077c.netlify.app/)
 
